@@ -1,17 +1,9 @@
 package com.example.cattinder.api;
 
-import com.google.gson.Gson;
-
 import com.example.cattinder.data.CatServiceResponse;
 import com.example.cattinder.rx.SchedulerFactory;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import retrofit.ErrorHandler;
 import retrofit.RestAdapter;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
 import retrofit.http.GET;
 import retrofit.http.Query;
 import rx.Observable;
@@ -35,7 +27,6 @@ public interface CatService {
     private final CatService service;
 
     public static RestClient createService() {
-
       return new RestClient();
     }
 
