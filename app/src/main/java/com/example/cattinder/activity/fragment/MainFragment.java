@@ -95,6 +95,9 @@ public class MainFragment extends Fragment{
     }
 
 
+
+    // https://github.com/Diolor/Swipecards
+
     private class CatSwipeAdapter extends BaseAdapter{
 
         private List<CatServiceResponse.Cat> mData = new ArrayList<>();
