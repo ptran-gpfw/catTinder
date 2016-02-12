@@ -13,17 +13,6 @@ import retrofit.http.Query;
 public class CatServiceTest{
 
     @Test
-    public void testCanCreateService() {
-
-        // Given
-        CatService catService = CatService.RestClient.createService().getService();
-
-
-        // Then
-        Assert.assertNotNull("Cat service wasn't created", catService);
-    }
-
-    @Test
     public void testGetCats() {
 
         // Given
