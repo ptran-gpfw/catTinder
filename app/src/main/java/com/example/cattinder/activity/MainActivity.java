@@ -16,11 +16,10 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         Fragment frag = getFragmentManager().findFragmentByTag(FRAG_TAG_MAIN);
         if(frag == null) {
             frag = new MainFragment();
+
             getFragmentManager()
                     .beginTransaction()
                     .add(R.id.fragment_container, frag, FRAG_TAG_MAIN)
