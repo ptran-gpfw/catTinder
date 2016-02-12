@@ -98,7 +98,7 @@ public class MainFragment extends Fragment{
 
     // https://github.com/Diolor/Swipecards
 
-    private class CatSwipeAdapter extends BaseAdapter{
+    private class CatSwipeAdapter extends BaseAdapter implements SwipeFlingAdapterView.onFlingListener {
 
         private List<CatServiceResponse.Cat> mData = new ArrayList<>();
 
@@ -131,5 +131,33 @@ public class MainFragment extends Fragment{
             return null;
         }
 
+        @Override
+        public void onScroll(float v) {
+
+        }
+
+
+
+
+        @Override
+        public void removeFirstObjectInAdapter() {
+            mData.remove(0);
+            this.notifyDataSetChanged();
+        }
+
+        @Override
+        public void onLeftCardExit(Object o) {
+
+        }
+
+        @Override
+        public void onRightCardExit(Object o) {
+
+        }
+
+        @Override
+        public void onAdapterAboutToEmpty(int i) {
+            getMoreCats();
+        }
     }
 }
