@@ -1,25 +1,54 @@
 package com.example.cattinder.api;
 
+import com.example.cattinder.data.CatServiceResponse;
+
 import junit.framework.Assert;
 
 import org.junit.Test;
+
+import retrofit.http.Query;
 /**
  * Created by doddy on 2/12/16.
  */
 public class CatServiceTest{
 
     @Test
-    private void testCanCreateService() {
+    public void testCanCreateService() {
 
+        // Given
         CatService catService = CatService.RestClient.createService().getService();
+
+
+        // Then
         Assert.assertNotNull("Cat service wasn't created", catService);
     }
 
     @Test
-    private void test() {
+    public void testGetCats() {
 
-        CatService catService = CatService.RestClient.createService().getService();
-        Assert.assertNotNull("Cat service wasn't created", catService);
+        // Given
+        ICatAdapter catAdapter = new CatAdapter(new MockCatService());
+
+
+        // When
+        CatServiceResponse response = catAdapter.getCats(0);
+
+
+        // Then
+        Assert.assertNotNull(response);
     }
 
+
+
+
+
+
+
+    private class MockCatService implements CatService {
+
+        @Override
+        public CatServiceResponse getCats(@Query("start") int startIndex) {
+            return new CatServiceResponse();
+        }
+    }
 }
