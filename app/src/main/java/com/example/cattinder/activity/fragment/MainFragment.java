@@ -12,8 +12,12 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 
 public class MainFragment extends Fragment{
 
@@ -91,5 +95,38 @@ public class MainFragment extends Fragment{
     }
 
 
+    private class CatSwipeAdapter extends BaseAdapter{
 
+        private List<CatServiceResponse.Cat> mData = new ArrayList<>();
+
+        public void addData(List<CatServiceResponse.Cat> newData) {
+            mData.addAll(newData);
+            notifyDataSetChanged();
+        }
+
+        @Override
+        public int getCount() {
+            return mData.size();
+        }
+
+        @Override
+        public CatServiceResponse.Cat getItem(int position) {
+            if(position < 0
+                    || position >= mData.size()) {
+                return null;
+            }
+            return mData.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            return null;
+        }
+
+    }
 }
